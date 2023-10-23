@@ -1,29 +1,20 @@
 #include "main.h"
 #include <stdio.h>
 /**
-*print_diagsums - prints sum of two diagonals
-*@a:pointer to array
-*@size:size of array
-*Return: void
-*/
-void print_diagsums(int *a, int size) 
+ * print_diagsums - prints diagonal summaries
+ * @a: array to use
+ * @size: size of diagonal
+ */
+void print_diagsums(int *a, int size)
 {
-int i, size1;
-unsigned int sumDiag1, sumDiag2;
-	
-size1 = 0;
-sumDiag1 = 0;
-sumDiag2 = 0;
-	
-size1 = (size * size) - 1;
-	
-for (i = 0; i <= size1; i = i + (size + 1))
-{
-sumDiag1 = sumDiag1 + a[i];
-}
-for (i = (size - 1); i < size1; i = i + (size - 1))
-{
-sumDiag2 = sumDiag2 + a[i];
-}
-printf("%d, %d\n", sumDiag1, sumDiag2);
+	int i;
+	int diagO = 0;
+	int diagT = 0;
+
+	for (i = 0; i < size; i++)
+	{
+		diagO += a[(i * size) + i];
+		diagT += a[(size - 1) + ((size - 1) * i)];
+	}
+	printf("%d, %d\n", diagO, diagT);
 }
